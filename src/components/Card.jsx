@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import backFace from '../images/background-card.png';
 
-const Card = ({ nameCard, number, frontFace, flipCard, unflippedCards, disabledCards }) => {
+const Card = ({ name, number, frontFace, flipCard, unflippedCards, disabledCards }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [hasEvent, setHasEvent] = useState(true);
 
@@ -19,14 +19,17 @@ const Card = ({ nameCard, number, frontFace, flipCard, unflippedCards, disabledC
   }, [disabledCards])
 
   const handleClick = e => {
-    const value = flipCard(nameCard, number);
+    
+    const value = flipCard(name, number, frontFace);
+    console.log(number)
     if (value !== 0) {
-      setIsFlipped(!isFlipped);
+       setIsFlipped(!isFlipped);
     }
   }
 
   return (
     <div className='card' >
+      
       <ReactCardFlip isFlipped={isFlipped} >
         <img className='card-image' src={backFace} alt='back-card' onClick={hasEvent ? handleClick : null} />
         <img className='card-image' src={frontFace} alt='front-card' onClick={hasEvent ? handleClick : null} />

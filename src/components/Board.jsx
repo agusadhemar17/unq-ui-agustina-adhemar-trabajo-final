@@ -11,7 +11,10 @@ function Board() {
   const [unflippedCards, setUnflippedCards] = useState([]);
   const [disabledCards, setDisabledCards] = useState([]);
   const [num, setNum] = useState(16);
-  
+  const [won,setWon] = useState(false);
+  const [activeCards,setActiveCards] = useState([]);
+  const [points,setPoints] = useState([]);
+
   const sizeBoard = () => {
     setCards(images.slice(0, num).sort(function(){return Math.random() -0.5}))
     ;
@@ -27,23 +30,26 @@ function Board() {
     checkMatch();
   }, [secondCardSelect]);
 
-  const flipCard = (nameCard, number) => {
-    if (firstCardSelect.nameCard === nameCard && firstCardSelect.number === number) {
+  const flipCard = (name, number, img, index) => {
+
+    if (firstCardSelect.name === name && firstCardSelect.number === number) {
       return 0;
     }
-    if (!firstCardSelect.nameCard) {
-      setFirstCardSelect({ nameCard, number });
+    if (!firstCardSelect.name) {
+      setFirstCardSelect({ name, number, img });
+      
     }
-    else if (!secondCardSelect.nameCard) {
-      setSecondCardSelect({ nameCard, number });
+    else if (!secondCardSelect.name) {
+      setSecondCardSelect({ name, number, img});
     }
     return 1;
   }
 
   const checkMatch = () => {
-    if (firstCardSelect.nameCard && secondCardSelect.nameCard) {
-      const match = firstCardSelect.nameCard === secondCardSelect.nameCard;
+    if (firstCardSelect.name && secondCardSelect.name) {
+      const match = firstCardSelect.img == secondCardSelect.img;
       match ? disableCards() : unflipCards();
+     
     }
   }
 
@@ -61,11 +67,15 @@ function Board() {
     setFirstCardSelect({});
     setSecondCardSelect({});
   }
-  const resetPlay = () => {}
+  const resetBoard = () => {}
 
   return (
     <div className='col-md-4'>
+      <div className="menu-tablero">
+         <a src="" className="boton-orange-sm" onClick={resetBoard}>Reiniciar Partida</a>
+      </div>
       <div className='cards-container' >
+      
         {
           cards.map((card, index) => (
             <Card

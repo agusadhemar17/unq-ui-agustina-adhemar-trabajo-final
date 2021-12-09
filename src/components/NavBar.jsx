@@ -12,9 +12,7 @@ function navBar() {
       
         <div className="menu">
             <img src={logo} className="logo" alt="logo" />
-            <a src="" className="boton-orange">1 Player: </a>
-            <a src="" className="boton-orange">2 Player</a>
-            <a src="" className="boton-orange">Reiniciar Partida</a>
+            
         </div>
         <div className="menu-tablero">
             <a src="" className="boton-orange-sm" onClick="">4x4 </a>

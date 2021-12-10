@@ -11,19 +11,26 @@ function Board() {
   const [unflippedCards, setUnflippedCards] = useState([]);
   const [disabledCards, setDisabledCards] = useState([]);
   const [num, setNum] = useState(16);
-  const [won,setWon] = useState(false);
+  const [won,setWon] = useState("");
   const [activeCards,setActiveCards] = useState([]);
-  const [points,setPoints] = useState([]);
+  const [counter, setCounter] = useState(0);
+ const [container, setContainer]= useState('cards-container')
 
   const sizeBoard = () => {
-    setCards(images.slice(0, num).sort(function(){return Math.random() -0.5}))
-    ;
+    setCards(images.slice(0, num).sort(function(){return Math.random() -0.5}));
   } 
+
+const setBoard = (size) =>{
+  setNum(36);
+  setCards(images.slice(0, num).sort(function(){return Math.random() -0.5}));
+  if(num===36){
+  setContainer('cards-container6');
+  }
+}
 
   useEffect(() => {
     sizeBoard()
-    
-    
+       
   }, [])
 
   useEffect(() => {
@@ -54,8 +61,11 @@ function Board() {
   }
 
   const disableCards = () => {
+    setCounter (counter + 2);
     setDisabledCards([firstCardSelect.number, secondCardSelect.number]);
     resetCards();
+    checkWon();
+    
   };
 
   const unflipCards = () => {
@@ -67,14 +77,30 @@ function Board() {
     setFirstCardSelect({});
     setSecondCardSelect({});
   }
-  const resetBoard = () => {}
+  const resetBoard = () => {
+    window.location.reload()
+  }
+
+  const checkWon = () =>{
+    if(counter === (cards.length-2)){
+      
+      setWon("You Won the Game!!!");
+    }
+  }
+
 
   return (
     <div className='col-md-4'>
       <div className="menu-tablero">
-         <a src="" className="boton-orange-sm" onClick={resetBoard}>Reiniciar Partida</a>
+      
+            <a src="" className="boton-orange-sm" onClick={setBoard}>4x4 </a>
+            <a src="" className="boton-orange-sm" onClick={setBoard}>6x6</a>
+            {/* <a src="" className="boton-orange-sm" onClick={setBoard}>8x8</a> */}
+        <h1 className='result'>Match Result: {won}</h1>
+        <a src="" className="boton-orange-sm" onClick={resetBoard}>Reset Game</a>
+        
       </div>
-      <div className='cards-container' >
+      <div className={container} >
       
         {
           cards.map((card, index) => (

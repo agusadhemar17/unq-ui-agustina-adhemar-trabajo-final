@@ -9,6 +9,13 @@ body{background-color: rgb(255, 237, 176);
   justify-content: center;
   align-items: center;
 }
+.result{
+    text-decoration: solid;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: navy;
+    text-align: center;
+}
 .board2{
   width: calc(100vh - 240px);
   max-width: calc(100vw - 40px);
@@ -43,7 +50,7 @@ body{background-color: rgb(255, 237, 176);
 }
 .menu{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   margin: 2% 0;
 }
@@ -54,6 +61,8 @@ body{background-color: rgb(255, 237, 176);
 }
 
 .cards-container{
+  display: grid;
+  grid-template-columns: 12.5rem  12.5rem 12.5rem 12.5rem;
   justify-content: center;
   width:80%;
   height: 60%;
@@ -61,12 +70,31 @@ body{background-color: rgb(255, 237, 176);
   flex-wrap: nowrap;
  }
 
+ .cards-container6{
+   margin: 2% 20%;
+  justify-content: center;
+  /* width: 100vh;
+  height: 100vw; */
+  display: grid; 
+  grid-template-columns:  repeat(6, 1fr); 
+  grid-template-rows:  repeat(6, 1fr); 
+  gap: 2% 2%; 
+  flex-wrap:nowrap;
+}
+.cards-container8{
+  width: 100vh;
+  height: 100vw;
+  display:grid;
+  grid-gap:1%;
+  margin: 1% 1%;
+  grid-template-columns: repeat(8, 1fr);
+}
 .card{
   display:inline-block;
   margin: 5px;
   border-radius: 5px;
-  width: calc(200px - 10px);
-  height: calc(200px - 10px);
+  width: 10%;
+  height: 10%;
   cursor: pointer;
   
 }

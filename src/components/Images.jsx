@@ -14,6 +14,8 @@ import img13 from '../images/murci-diab.png';
 import img14 from '../images/pulpo-c.png';
 import img15 from '../images/pulpo-rayas.png';
 import img16 from '../images/pulpo-v.png';
+import img17 from '../images/amarillo.png';
+import img18 from '../images/naranja.png';
 
 const images = [
   {
@@ -143,6 +145,20 @@ const images = [
   },{
     img: img16,
     nameCard: 'diablo'
+  },
+  {
+    img: img17,
+    nameCard: 'amarillo2'
+  },{
+    img: img17,
+    nameCard: 'amarillo'
+  },
+  {
+    img: img18,
+    nameCard: 'naranja2'
+  },{
+    img: img18,
+    nameCard: 'naranja'
   },
 
 ];

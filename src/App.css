@@ -83,7 +83,7 @@ body{background-color: rgb(255, 237, 176);
 }
 .cards-container8{
   width: 100vh;
-  height: 100vw;
+  height: auto;
   display:grid;
   grid-gap:1%;
   margin: 2% 1%;
@@ -103,7 +103,7 @@ body{background-color: rgb(255, 237, 176);
   transform: scale (0.98);
 }
 .card-image{
-  width: 5vw;
+  width: 7vw;
   height: auto;
 }
 
